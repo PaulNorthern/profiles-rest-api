@@ -6,8 +6,12 @@ from profiles_api import views
 router = DefaultRouter()
 # создаст 4 доп. url для наших функций
 router.register('hello-viewset', views.HelloViewSet, basename='hello-viewset')
+router.register('profile', views.UserProfileViewSet)
+
+
 
 urlpatterns = [
     path('hello-view/', views.HelloApiView.as_view()),
-    path('', include(router.urls))
+    path('', include(router.urls)),
+
 ]
