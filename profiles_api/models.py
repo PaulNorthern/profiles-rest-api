@@ -33,27 +33,33 @@ class UserProfileManager(BaseUserManager):
 
 
 class UserProfile(AbstractBaseUser, PermissionsMixin):
-    """Data model for users in the system .__doc__"""
+    """A user profile in our system."""
+
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
-    # Permissions
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-
     # Указываем, что все objects для класса происходят от Manager
     objects = UserProfileManager()
-
     # Задаем USERNAME_FIELD–для определения уникального идентификатора в модели User со значением email
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELD = ['name']
+    REQUIRED_FIELDS = ['name']
 
     def get_full_name(self):
-         '''Retrieve full name of user'''
-         return self.name
+        """
+        Required function so Django knows what to use as the users full name.
+        """
+
+        self.name
 
     def get_short_name(self):
-        '''Retrieve short name of user'''
-        return self.name
+        """
+        Required function so Django knows what to use as the users short name.
+        """
+
+        self.name
 
     def __str__(self):
+        """What to show when we output an object as a string."""
+
         return self.email
