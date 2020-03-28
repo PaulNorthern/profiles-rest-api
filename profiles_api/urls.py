@@ -7,6 +7,7 @@ router = DefaultRouter()
 # создаст 4 доп. url для наших функций
 router.register('hello-viewset', views.HelloViewSet, basename='hello-viewset')
 router.register('profile', views.UserProfileViewSet)
+router.register('feed', views.UserProfileFeedViewSet)
 
 
 
